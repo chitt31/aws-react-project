@@ -1,6 +1,5 @@
 # Stable Diffusion Generative AI Fullstack Application
-![](https://imgur.com/g4gaI1A.png)
-Lets build a full stack application to call Stable Diffusion AI model. We will first build the backend then frontend. Backend includes: 1) SageMaker 2) Lambda 3) Api Gateway. And Frontend includes react web app deployed in Amplify. 
+
 
 ![](documents/text-to-image.png)
 
@@ -9,8 +8,7 @@ Lets build a full stack application to call Stable Diffusion AI model. We will f
 
 
 
-## Demo
-[ view live app here](https://main.d32ou2x1stz40z.amplifyapp.com/)
+
 
 ![](documents/demo-text-to-image.gif)
 
