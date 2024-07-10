@@ -14,10 +14,10 @@
 
 ```
 # Clone the repository to your local machine
-git clone https://github.com/rupeshtiwari/amplify-react-stabledapp.git
+git clone https://github.com/chitt31/aws-react-project
 
 # Go to the project folder
-cd amplify-react-stabledapp
+cd aws-react-project
 
 # Install npm dependencies with exact versions from package-lock.json file
  
@@ -30,12 +30,10 @@ npm start
 
 **Table of Contents**
 
-- [Stable Diffusion Generative AI Fullstack Application](#stable-diffusion-generative-ai-fullstack-application)
-  - [Demo](#demo)
+
   - [Architecture Diagram](#architecture-diagram)
-  - [How to run this project locally?](#how-to-run-this-project-locally)
-    - [Videos to watch and follow along](#videos-to-watch-and-follow-along)
-      - [Introduction to the course](#introduction-to-the-course)
+
+
   - [Build Backend](#build-backend)
     - [Step 1: Create SageMaker domain](#step-1-create-sagemaker-domain)
     - [Step 2: Deploy Stable Diffusion model](#step-2-deploy-stable-diffusion-model)
@@ -82,15 +80,15 @@ https://aws.amazon.com/blogs/machine-learning/generate-images-from-text-with-the
 #### 1: Create Function
 
 Now we have a SageMaker model endpoint. Let’s look at how we call it from Lambda. We use the SageMaker runtime API action and the Boto3 sagemaker-runtime.invoke_endpoint().
-Select Runtime `Python 3.7` and use x86_64 architecture.
+Select Runtime `Python 3.8` and use x86_64 architecture.
 
 #### 2: Add permission
 
 Add below permissions to `AWSLambdaBasicExecutionRole`
 
 ```json
-    "Version": "2012-10-17",
-    "Statement": [
+    { "Version": "2012-10-17",
+      "Statement": [
         // add this one for S3 bucket and sagemaker invocation
         {
             "Sid": "VisualEditor0",
@@ -123,7 +121,7 @@ Add below permissions to `AWSLambdaBasicExecutionRole`
 
 #### 3: create s3 bucket to save images
 
-create bucket called as `stabled`
+create bucket called as `stablai`
 
 #### 4: create environment variables in lambda
 
@@ -135,7 +133,7 @@ Key
 
 Value
 AWS_SM_EP	jumpstart-example-infer-model-txt2img-s-2023-02-16-01-51-11-187
-OUT_S3_BUCKET_NAME	testbucket-rupesh
+OUT_S3_BUCKET	testbucket-rupesh
 ```
 
 #### 7: Increase the Timeout for lambda
@@ -144,7 +142,7 @@ Go to configuration->General Configuration->Timeout Edit and change to `10min`
 
 #### 6: Add below 2 layers in lambda
 
-1. Add `AWSLambda-Python37-SciPy1x` layer for `numpy`
+1. Add `AWSLambda-Python38-SciPy1x` layer for `numpy`
 2. Add `Matplotlib` layer
 
 #### 5: Then add below code:
@@ -160,9 +158,9 @@ import os
 
 
 endpoint_name = os.environ['AWS_SM_EP']
-s3 = boto3.resource('s3', region_name='us-east-1')
-bucket_name = os.environ['OUT_S3_BUCKET_NAME']
-s3_client = boto3.client('s3', region_name='us-east-1')
+s3 = boto3.resource('s3', region_name='us-east-2')
+bucket_name = os.environ['OUT_S3_BUCKET']
+s3_client = boto3.client('s3', region_name='us-east-2')
 
 
 def query_endpoint(text):
@@ -224,11 +222,11 @@ You can create an API by following these steps:
 1. On the API Gateway console, choose the REST API
 2. Choose Build.
 3. Select New API.
-4. For API name¸ enter a name (for example, BreastCancerPredition).
+4. For API name¸ enter a name (for example, stableai).
 5. Leave Endpoint Type as Regional.
 6. Choose Create API.
 7. On the Actions menu, choose Create resource.
-8. Enter a name for the resource (for example, predictbreastcancer).
+8. Enter a name for the resource (for example, stableai).
 9. After the resource is created, on the Actions menu, choose Create Method to create a POST method.
 10. For Integration type, select Lambda Function.
 11. For Lambda function, enter the function you created.
@@ -269,9 +267,9 @@ npm start
 
 ### Step 2: Initialize GitHub Repository
 
-1. Create a new GitHub repo for your app with this name `amplify-react-stabledapp` Description:`Stable Diffusion from Stability AI and AWS Sagemaker. Full stack application with AWS API gateway and Amplify React App`
+1. Create a new GitHub repo for your app with this name `aws-react-project` Description:`Stable Diffusion from Stability AI and AWS Sagemaker. Full stack application with AWS API gateway and Amplify React App`
 
-2. Open a new terminal and navigate back to your app's root folder, for example, `stabledapp`
+2. Open a new terminal and navigate back to your app's root folder, for example, `stableai`
 3. Using create-react-app will automatically initialize the git repo and make an initial commit.
 
    ```
