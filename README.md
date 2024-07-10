@@ -4,13 +4,7 @@
 ![](documents/text-to-image.png)
 
 
-![Mobile App](documents/mobile-app.png)
 
-
-
-
-
-![](documents/demo-text-to-image.gif)
 
 ## Architecture Diagram
 
