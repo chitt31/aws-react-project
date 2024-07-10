@@ -55,11 +55,9 @@ npm start
     - [Step 4: Automatically deploy code changes CI/CD](#step-4-automatically-deploy-code-changes-cicd)
   - [References](#references)
 
-### Videos to watch and follow along
 
-#### Introduction to the course
 
-[![Stable Diffusion Introduction Video](https://img.youtube.com/vi/VQTCpj9e0p0/0.jpg)](https://www.youtube.com/watch?v=VQTCpj9e0p0)
+
 
 
 ## Build Backend
