@@ -26,7 +26,7 @@ npm ci
 # Run the react app
 npm start
 ```
-![running react app locally](documents/localhost.png)
+
 
 **Table of Contents**
 
